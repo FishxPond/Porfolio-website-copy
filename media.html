@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Art Tube - Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 id="logo"><a href="index.html">Art Tube</a></h1>
+  </header>
+
+  <main id="viewer">
+    <div class="viewer-main">
+      <div id="artDisplay" class="media-container"></div>
+      <h2 id="artTitle"></h2>
+      <p id="artMeta"></p>
+      <p id="artDescription"></p>
+      <form id="commentForm">
+        <input type="text" id="commentInput" placeholder="Add a comment..." />
+        <button type="submit">Post</button>
+      </form>
+      <ul id="commentList"></ul>
+    </div>
+    <aside id="sidebar">
+      <h3>Other Artworks</h3>
+      <div id="sidebarThumbnails" class="list"></div>
+    </aside>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

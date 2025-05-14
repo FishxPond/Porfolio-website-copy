@@ -1,0 +1,150 @@
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+
+if (document.getElementById("thumbnails")) {
+  const featuredEl = document.getElementById("featured");
+  const thumbnailsEl = document.getElementById("thumbnails");
+  const searchBar = document.getElementById("searchBar");
+  const filterButtons = document.querySelectorAll(".filter");
+
+  function renderHomepage(filteredList = artPieces) {
+    const [featured, ...rest] = filteredList;
+
+    if (featured) {
+      featuredEl.innerHTML = `
+        <div class="thumbnail" onclick="location.href='media.html?id=${featured.id}'">
+          <img src="${featured.src}" alt="${featured.title}" />
+          <p>${featured.title}</p>
+        </div>
+      `;
+    }
+
+    thumbnailsEl.innerHTML = "";
+    rest.forEach((piece) => {
+      const thumb = document.createElement("div");
+      thumb.className = "thumbnail";
+      thumb.onclick = () => (window.location.href = `media.html?id=${piece.id}`);
+      thumb.innerHTML = `
+        <img src="${piece.src}" alt="${piece.title}" />
+        <p>${piece.title}</p>
+      `;
+      thumbnailsEl.appendChild(thumb);
+    });
+  }
+
+  // HERE!!!!!!!
+
+  renderHomepage();
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      const type = btn.getAttribute("data-type");
+      if (type === "all") {
+        renderHomepage(artPieces);
+      } else {
+        const filtered = artPieces.filter((p) => p.type === type);
+        renderHomepage(filtered);
+      }
+    });
+  });
+
+  searchBar.addEventListener("input", (e) => {
+    const query = e.target.value.toLowerCase();
+    const filtered = artPieces.filter((p) => p.title.toLowerCase().includes(query));
+    renderHomepage(filtered);
+  });
+}
+
+// vid in watch later!!!
+
+if (document.getElementById("artDisplay")) {
+  const id = getQueryParam("id");
+  const art = artPieces.find((p) => p.id === id);
+
+  if (art) {
+    const artDisplay = document.getElementById("artDisplay");
+    const artTitle = document.getElementById("artTitle");
+    const artMeta = document.getElementById("artMeta");
+    const artDescription = document.getElementById("artDescription");
+    const commentForm = document.getElementById("commentForm");
+    const commentInput = document.getElementById("commentInput");
+    const commentList = document.getElementById("commentList");
+    const sidebar = document.getElementById("sidebarThumbnails");
+
+    if (art.type === "image") {
+      artDisplay.innerHTML = `<img src="${art.src}" style="width:100%;height:auto;aspect-ratio:4/3;" />`;
+    } else {
+      artDisplay.innerHTML = `
+        <video controls style="width:100%;height:auto;aspect-ratio:4/3;">
+          <source src="${art.src}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      `;
+    }
+
+    artTitle.textContent = art.title;
+    artMeta.textContent = `${art.views} views • ${art.likes} likes`;
+    artDescription.textContent = art.description;
+
+      // figure out why i cant delete this????
+      
+    function renderComments() {
+      commentList.innerHTML = "";
+      art.comments.forEach((comment) => {
+        const li = document.createElement("li");
+        li.className = "comment";
+        li.innerHTML = `
+          <div class="avatar" style="background:${comment.avatarColor}"></div>
+          <div class="content">
+            <div class="username">${comment.username}</div>
+            <div>${comment.text}</div>
+          </div>
+        `;
+        commentList.appendChild(li);
+      });
+    }
+
+    // KAYLA U LEFT OFF HERE FIX THIS REMEMBER
+
+    renderComments();
+
+    commentForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const userComment = commentInput.value.trim();
+      if (userComment) {
+        const user = {
+          avatarColor: getRandomPastelColor(),
+          text: userComment
+        };
+        const li = document.createElement("li");
+        li.className = "comment";
+        li.innerHTML = `
+          <div class="avatar" style="background:${user.avatarColor}"></div>
+          <div class="content">
+            <div class="username">${user.username}</div>
+            <div>${user.text}</div>
+          </div>
+        `;
+        commentList.insertBefore(li, commentList.firstChild);
+        commentInput.value = "";
+      }
+    });
+
+    const otherArt = artPieces.filter((p) => p.id !== id);
+    otherArt.slice(0, 15).forEach((p) => {
+      const div = document.createElement("div");
+      div.className = "thumbnail";
+      div.onclick = () => (window.location.href = `media.html?id=${p.id}`);
+      div.innerHTML = `
+        <img src="${p.src}" alt="${p.title}" />
+        <p>${p.title}</p>
+      `;
+      sidebar.appendChild(div);
+    });
+  }
+}
