@@ -7,7 +7,7 @@ const artPieces = [
     title: "Character Sheet",
     type: "image",
     src: "media/art1.jpeg",
-    description: "This is a simple character sheet for some concept work for a 3d animation class.",
+    description: "This is a simple character sheet for some concept work for a 3d animation class! The top one is Kitty and the bottom is Foxy",
     views: 2345,
     likes: 320,
     comments: [
@@ -21,11 +21,11 @@ const artPieces = [
     title: "Mikuuuuuuu",
     type: "video",
     src: "media/vid1.mov",
-    description: "A short tweened animation.",
+    description: "My first attempt at tweening! I wish I added sound, it feels so ommonis -_-",
     views: 1400,
     likes: 205,
     comments: [
-      { username: "Animator123", avatarColor: "#ffcc99", text: "mimimiku" },
+      { username: "Animator123", avatarColor: "#ffcc99", text: "Make her do a Flip!!!!" },
       { username: "mukuluv", avatarColor: "#cc99ff", text: "needed more Muku tbh" },
       { username: "LoopMaster", avatarColor: "#ffff99", text: "Can you make it more loopy?" }
     ]
@@ -35,7 +35,7 @@ const artPieces = [
     title: "The Cat",
     type: "image",
     src: "media/art2.png",
-    description: "A short looping character animation.",
+    description: "The very first 3d model of Kitty.... she scares me a lil",
     views: 1400,
     likes: 205,
     comments: [
@@ -49,7 +49,7 @@ const artPieces = [
     title: "Donut",
     type: "image",
     src: "media/art3.png",
-    description: "",
+    description: "My first every 3d model!",
     views: 1400,
     likes: 205,
     comments: [
@@ -63,7 +63,7 @@ const artPieces = [
     title: "Player room",
     type: "image",
     src: "media/art4.png",
-    description: "The line are for a game jam game I used to work on.",
+    description: "The line are for a game jam I was working on, sadly the game wasnt finished :(",
     views: 1400,
     likes: 205,
     comments: [
@@ -77,7 +77,7 @@ const artPieces = [
     title: "Here for milkshakes!",
     type: "image",
     src: "media/art5.jpeg",
-    description: "Digi foundations 2 thing! This was the start of a strage Alien design phase.",
+    description: "Digi foundations 2 thing! This was the start of a strage Alien design phase... I wanna make more",
     views: 1400,
     likes: 205,
     comments: [
@@ -147,7 +147,7 @@ const artPieces = [
     title: "H I M",
     type: "image",
     src: "media/art8.png",
-    description: "THAT CAT OH THAT EVIL EVIL CATT",
+    description: "THAT CAT OH THAT EVIL EVIL CATT ):<",
     views: 1400,
     likes: 205,
     comments: [
@@ -172,10 +172,10 @@ const artPieces = [
   },
   {
     id: "13",
-    title: "Work :(",
+    title: "Avrage subway work shift:(",
     type: "image",
     src: "media/art10.png",
-    description: "A liner storyline of me at work",
+    description: "A video summary of a closing shift at subway, made for my time baised meda class! (And yes I hate my job, i want the place to burn)",
     views: 1400,
     likes: 205,
     comments: [
@@ -189,21 +189,21 @@ const artPieces = [
     title: "0_0",
     type: "video",
     src: "media/vid4.mp4",
-    description: "My buddy asked me to make him a think to put in his horror show",
+    description: "My buddy asked me to make him a thing to put in his horror show! I think i did pretty okay but Ive relized I watch way too many ARGs -_-",
     views: 1400,
     likes: 205,
     comments: [
-      { username: "", avatarColor: "#ffcc99", text: "" },
+      { username: "Nick", avatarColor: "#ffcc99", text: "Cringe" },
       { username: "", avatarColor: "#cc99ff", text: "" },
       { username: "", avatarColor: "#ffff99", text: "" }
     ]
   },
   {
     id: "15",
-    title: "Women!",
+    title: "Women love them!",
     type: "image",
     src: "media/art11.jpeg",
-    description: "Hehe more aliens!",
+    description: "Hehe more aliens! Why? BECAUSE I LIKE THEM AND ITS FUNNY TO ME",
     views: 1400,
     likes: 205,
     comments: [
