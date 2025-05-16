@@ -172,7 +172,7 @@ const artPieces = [
   },
   {
     id: "13",
-    title: "Work :(",
+    title: "God",
     type: "image",
     src: "media/art10.png",
     description: "A liner storyline of me at work",
@@ -186,7 +186,7 @@ const artPieces = [
   },
   {
     id: "14",
-    title: "0_0",
+    title: "Subway :(",
     type: "video",
     src: "media/vid4.mp4",
     description: "My buddy asked me to make him a think to put in his horror show",
