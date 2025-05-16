@@ -3,22 +3,19 @@ function getQueryParam(param) {
   return urlParams.get(param);
 }
 
-// ==============================
-// Homepage Logic
-// ==============================
+
 if (document.getElementById("thumbnails")) {
   const featuredEl = document.getElementById("featured");
   const thumbnailsEl = document.getElementById("thumbnails");
   const searchBar = document.getElementById("searchBar");
   const filterButtons = document.querySelectorAll(".filter");
 
-  // Randomize array
   function shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
   }
 
   function renderHomepage(filteredList = artPieces) {
-    const shuffled = shuffle([...filteredList]); // make sure not to mutate original
+    const shuffled = shuffle([...filteredList]); // clone so original not mutated
     const [featured, ...rest] = shuffled;
 
     if (featured) {
@@ -62,9 +59,6 @@ if (document.getElementById("thumbnails")) {
   });
 }
 
-// ==============================
-// Viewer Page Logic
-// ==============================
 if (document.getElementById("artDisplay")) {
   const id = getQueryParam("id");
   const art = artPieces.find((p) => p.id === id);
@@ -79,21 +73,19 @@ if (document.getElementById("artDisplay")) {
   const sidebar = document.getElementById("sidebarThumbnails");
   const searchBar = document.getElementById("searchBar");
 
-  // ✅ Enable search redirect to homepage
   searchBar.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
       const query = encodeURIComponent(e.target.value.trim());
       if (query) {
-        window.location.href = `index.html?search=${query}`;
+        window.location.href = `search.html?query=${query}`;
       }
     }
   });
 
   if (art) {
-    // Show image or video
     if (art.type === "image") {
       artDisplay.innerHTML = `
-        <img src="${art.src}" style="width:100%;height:auto;aspect-ratio:4/3;" />
+        <img src="${art.src}" alt="${art.title}" style="width:100%;height:auto;aspect-ratio:4/3;" />
       `;
     } else {
       artDisplay.innerHTML = `
@@ -104,12 +96,10 @@ if (document.getElementById("artDisplay")) {
       `;
     }
 
-    // Metadata
     artTitle.textContent = art.title;
     artMeta.textContent = `${art.views} views • ${art.likes} likes`;
     artDescription.textContent = art.description;
 
-    // Render comments
     function renderComments() {
       commentList.innerHTML = "";
       art.comments.forEach((comment) => {
@@ -143,7 +133,6 @@ if (document.getElementById("artDisplay")) {
       }
     });
 
-    // Show 5 other artworks in sidebar
     const otherArt = artPieces.filter((p) => p.id !== id);
     const selected = otherArt.sort(() => 0.5 - Math.random()).slice(0, 5);
 
@@ -159,3 +148,4 @@ if (document.getElementById("artDisplay")) {
     });
   }
 }
+
