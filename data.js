@@ -22,6 +22,7 @@ const artPieces = [
     type: "video",
     src: "media/vid1.mov",
     description: "My first attempt at tweening! I wish I added sound, it feels so ommonis -_-",
+    thumbnail: "assets/tnvid1.png",
     views: 1400,
     likes: 205,
     comments: [
@@ -74,7 +75,7 @@ const artPieces = [
   },
   {
     id: "6",
-    title: "Here for milkshakes!",
+    title: "Milkshakes!",
     type: "image",
     src: "media/art5.jpeg",
     description: "Digi foundations 2 thing! This was the start of a strage Alien design phase... I wanna make more",
@@ -92,6 +93,7 @@ const artPieces = [
     type: "video",
     src: "media/vid2.mp4",
     description: "My final for 3d animation, haha i remember the crazy all nigher I pulled to finish this one :p",
+    thumbnail: "assets/tnvid2.png",
     views: 1400,
     likes: 205,
     comments: [
@@ -134,6 +136,7 @@ const artPieces = [
     type: "video",
     src: "media/vid3.mp4",
     description: "Genuinly one of my fav movies, thank you mom for gifting me this movie on a burnt cd as a child",
+    thumbnail: "assets/tnvid3.png",
     views: 1400,
     likes: 205,
     comments: [
@@ -190,7 +193,8 @@ const artPieces = [
     title: "Subway :(",
     type: "video",
     src: "media/vid4.mp4",
-        description: "A video summary of a closing shift at subway, made for my time baised meda class! (And yes I hate my job, i want the place to burn)",
+    description: "A video summary of a closing shift at subway, made for my time baised meda class! (And yes I hate my job, i want the place to burn)",
+    thumbnail: "assets/tnvid4.png",
     views: 1400,
     likes: 205,
     comments: [
@@ -211,6 +215,22 @@ const artPieces = [
       { username: "Alen4832", avatarColor: "#ffcc99", text: "Haha! reminds me of how I met my wife!" },
       { username: "Women", avatarColor: "#cc99ff", text: "OMG so hawt!!!" },
       { username: "SadGuy", avatarColor: "#ffff99", text: "Siiigh they just never wnat a nice guy like me..." }
+    ]
+  },
+
+    {
+    id: "16",
+    title: ">:p",
+    type: "video",
+    src: "media/vid5.mp4",
+    description: "Sadly over the years I had met a lot of people I came to really love but not everyone can stick around as much as I want them too X_X",
+    thumbnail: "assets/tnvid5.png",
+    views: 1400,
+    likes: 205,
+    comments: [
+      { username: "", avatarColor: "#ffcc99", text: "" },
+      { username: "", avatarColor: "#cc99ff", text: "" },
+      { username: "", avatarColor: "#ffff99", text: "" }
     ]
   },
 

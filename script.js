@@ -3,7 +3,6 @@ function getQueryParam(param) {
   return urlParams.get(param);
 }
 
-
 if (document.getElementById("thumbnails")) {
   const featuredEl = document.getElementById("featured");
   const thumbnailsEl = document.getElementById("thumbnails");
@@ -14,14 +13,19 @@ if (document.getElementById("thumbnails")) {
     return array.sort(() => Math.random() - 0.5);
   }
 
+  function getThumbnailSrc(piece) {
+    return piece.type === "video" && piece.thumbnail ? piece.thumbnail : piece.src;
+  }
+
   function renderHomepage(filteredList = artPieces) {
-    const shuffled = shuffle([...filteredList]); // clone so original not mutated
+    const shuffled = shuffle([...filteredList]);
     const [featured, ...rest] = shuffled;
 
     if (featured) {
+      const thumbSrc = getThumbnailSrc(featured);
       featuredEl.innerHTML = `
         <div class="thumbnail" onclick="location.href='media.html?id=${featured.id}'">
-          <img src="${featured.src}" alt="${featured.title}" />
+          <img src="${thumbSrc}" alt="${featured.title}" />
           <p>${featured.title}</p>
         </div>
       `;
@@ -32,8 +36,11 @@ if (document.getElementById("thumbnails")) {
       const thumb = document.createElement("div");
       thumb.className = "thumbnail";
       thumb.onclick = () => (window.location.href = `media.html?id=${piece.id}`);
+
+      const thumbSrc = getThumbnailSrc(piece);
+
       thumb.innerHTML = `
-        <img src="${piece.src}" alt="${piece.title}" />
+        <img src="${thumbSrc}" alt="${piece.title}" />
         <p>${piece.title}</p>
       `;
       thumbnailsEl.appendChild(thumb);
@@ -52,12 +59,16 @@ if (document.getElementById("thumbnails")) {
     });
   });
 
-  searchBar.addEventListener("input", (e) => {
-    const query = e.target.value.toLowerCase();
-    const filtered = artPieces.filter((p) => p.title.toLowerCase().includes(query));
-    renderHomepage(filtered);
+  searchBar.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      const query = encodeURIComponent(e.target.value.trim());
+      if (query) {
+        window.location.href = `search.html?query=${query}`;
+      }
+    }
   });
 }
+
 
 if (document.getElementById("artDisplay")) {
   const id = getQueryParam("id");
@@ -140,12 +151,14 @@ if (document.getElementById("artDisplay")) {
       const div = document.createElement("div");
       div.className = "thumbnail";
       div.onclick = () => (window.location.href = `media.html?id=${p.id}`);
+
+      const thumbSrc = p.type === "video" && p.thumbnail ? p.thumbnail : p.src;
+
       div.innerHTML = `
-        <img src="${p.src}" alt="${p.title}" />
+        <img src="${thumbSrc}" alt="${p.title}" />
         <p>${p.title}</p>
       `;
       sidebar.appendChild(div);
     });
   }
 }
-

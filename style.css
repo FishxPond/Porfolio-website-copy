@@ -27,6 +27,10 @@
     text-align: center;
   }
 
+  h2 {
+    font-size: 30px;
+  }
+
   h3 {
     color: #f13f13;
     font-size: 40px;
@@ -95,9 +99,12 @@
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
-  font-size: 0.9rem;
-  color: #333;
 }
+
+  #thumbnailsSection {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
 
   .thumbnail:hover {
     transform: scale(2.2);
@@ -112,7 +119,7 @@
 
   .thumbnail {
     width: 200px;
-    height: 200px;
+    min-height: fit-content;
     margin: 10px;
     text-align: center;
     cursor: pointer;
@@ -125,6 +132,7 @@
 
   #thumbnails .thumbnail {
     width: 120px;
+    min-height: fit-content;
     margin-bottom: 20px;
     background-color: #d9f6f8;
     border: 3px solid #679ad4;
@@ -213,8 +221,6 @@
 
 #sidebar {
   flex: 1;
-  width: 25%;
-  display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center; 
@@ -226,20 +232,11 @@
 }
 
 #sidebarThumbnails {
+  align-items: center;
+  padding-left: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  max-height: 600px;
-}
-
-
-  #sidebarThumbnails {
-    width: 25%;
-    padding-left: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  gap: 15px;
   }
 
   #sidebarThumbnails .thumbnail {
